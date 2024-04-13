@@ -22,13 +22,12 @@ struct CustomMapView: UIViewRepresentable {
 
 
         var locManager = CLLocationManager()
-        locManager.requestWhenInUseAuthorization()
         var currentLocation: CLLocation!
         currentLocation = locManager.location
         let longg = currentLocation.coordinate.longitude
         let latt = currentLocation.coordinate.latitude
 
-        let location = CLLocationCoordinate2D(latitude: longg, latt)
+        let location = CLLocationCoordinate2D(latitude: longg, longitude: latt)
         let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 1000)!, longitudinalMeters: CLLocationDistance(exactly: 1000)!)
         mapView.setRegion(region, animated: true)
         return mapView
