@@ -126,7 +126,7 @@ struct LocSimView: View {
             LocSimManager.startLocSim(location: .init(latitude: Double(latTemp) ?? 0.0, longitude: Double(longTemp) ?? 0.0))
         }
         else {
-            UIApplication.shared.alert(body: "Those are empty coordinates mate !")
+            UIApplication.shared.alert(body: "empty coords")
         }
     }
 }
