@@ -22,7 +22,7 @@ struct CustomMapView: UIViewRepresentable {
 
 
         let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(53.393433), longitude: CLLocationDegrees(-2.598824))
-        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 1000)!, longitudinalMeters: CLLocationDistance(exactly: 1000)!)
+        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 60000)!, longitudinalMeters: CLLocationDistance(exactly: 60000)!)
         mapView.setRegion(region, animated: true)
         
         return mapView
