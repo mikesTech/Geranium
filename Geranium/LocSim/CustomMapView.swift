@@ -19,20 +19,22 @@ struct CustomMapView: UIViewRepresentable {
         mapView.layer.masksToBounds = true
         let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(_:)))
         mapView.addGestureRecognizer(tapRecognizer)
+
+        let location = mapView.userLocation.coordinate    
+        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 1000)!, longitudinalMeters: CLLocationDistance(exactly: 1000)!)
+        mapView.setRegion(region, animated: true)
+
         return mapView
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        let mapView = MKMapView()
-        let location = mapView.userLocation.coordinate    
-        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
-        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+
     }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-    
+
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: CustomMapView
 
