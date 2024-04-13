@@ -22,8 +22,9 @@ struct CustomMapView: UIViewRepresentable {
 
 
         let locationManager = CLLocationManager()
-        let span2 = MKCoordinateSpan(5.0, 5.0)
-        let region = MKCoordinateRegion( center: locationManager.location.coordinate, span: span2)
+        let userLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(locationManager.coordinate.latitude, locationManager.coordinate.longitude)
+        let span2 = MKCoordinateSpanMake(20.0, 20.0)
+        let region = MKCoordinateRegionMake( center: userLocation, span: span2)
         mapView.setRegion(region, animated: true)
         return mapView
     }
