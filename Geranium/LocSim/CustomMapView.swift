@@ -17,22 +17,22 @@ struct CustomMapView: UIViewRepresentable {
         mapView.showsUserLocation = true
         mapView.layer.cornerRadius = 15
         mapView.layer.masksToBounds = true
-
-        let location = mapView.userLocation.coordinate    
-        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
-        mapView.setRegion(mapView.regionThatFits(region), animated: true)
-
         let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(_:)))
         mapView.addGestureRecognizer(tapRecognizer)
         return mapView
     }
 
-    func updateUIView(_ uiView: MKMapView, context: Context) {}
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        let mapView = MKMapView()
+        let location = mapView.userLocation.coordinate    
+        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+    }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: CustomMapView
 
