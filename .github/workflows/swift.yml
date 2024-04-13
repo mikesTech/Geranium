@@ -9,13 +9,13 @@ on:
 jobs:
   build:
     name: Geranium
-    runs-on: macos-12
+    runs-on: macos-14
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install Theos
-        uses: Randomblock1/theos-action@v1.1
+        uses: Randomblock1/theos-action@v1.4
       - name: build
         run:  bash ipabuild.sh
       - name: Upload artifact
