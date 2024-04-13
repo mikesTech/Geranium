@@ -17,7 +17,10 @@ struct CustomMapView: UIViewRepresentable {
         mapView.showsUserLocation = true
         mapView.layer.cornerRadius = 15
         mapView.layer.masksToBounds = true
-        mapView.camera.eyeAltitude = 10;
+
+
+        mapView.camera.Altitude = 500
+
         let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(_:)))
         mapView.addGestureRecognizer(tapRecognizer)
         return mapView
