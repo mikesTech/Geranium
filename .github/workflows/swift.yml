@@ -23,4 +23,4 @@ jobs:
         with:
           name: Geranium - extract
           path: |
-            /Users/runner/work/${{github.event.repository.name}}/${{github.event.repository.name}}/build/gfd.tipa
+            /Users/runner/work/${{github.event.repository.name}}/${{github.event.repository.name}}/build/Geranium.tipa
