@@ -20,7 +20,15 @@ struct CustomMapView: UIViewRepresentable {
         let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap(_:)))
         mapView.addGestureRecognizer(tapRecognizer)
 
-        let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(53.393433), longitude: CLLocationDegrees(-2.598824))
+
+        var locManager = CLLocationManager()
+        locManager.requestWhenInUseAuthorization()
+        var currentLocation: CLLocation!
+        currentLocation = locManager.location
+        let longg = currentLocation.coordinate.longitude
+        let latt = currentLocation.coordinate.latitude
+
+        let location = CLLocationCoordinate2D(latitude: longg, latt)
         let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 1000)!, longitudinalMeters: CLLocationDistance(exactly: 1000)!)
         mapView.setRegion(region, animated: true)
         return mapView
